@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="./styles.css" />
+    <script type="text/javascript" src="./pokeapi.js"></script>
+    <script type="text/javascript" src="./script.js"></script>
+    <title>Pokedex</title>
+  </head>
+  <body>
+    <section class="cont" id="cont">
+      <section class="NT" id="NT">
+        <section class="Titulo">
+          <h1>Pokedex</h1>
+        </section>
+        <!--CONTENEDOR DE TODO-->
+        <section class="todo" id="todo">
+          <!--CONTENEDOR DERECHO-->
+          <div class="TDere" id="TDere">
+            <section class="DU" id="DU">
+              <div class="cuad" id="cuad"></div>
+              <div class="triad" id="triad">
+                <div class="Ddentro"></div>
+              </div>
+            </section>
+            <section class="DD" id="DD">
+              <div class="Datos" id="Datos"></div>
+              <div class="ops" id="ops">
+                <div class="BOT" id="BOT">
+                  <!--en la funcion puedes poner como atributo si es "name" o "id"-->
+                  <div class="BOT1" id="BOT1" onclick="buscarNom()"><h1>Name</h1></div>
+                  <div class="BOT2" id="BOT2" onclick="buscarID()"><h1>ID</h1></div>
+                  <!--nombre estandarizado en minusculas-->
+                  <div class="BOT3" id="BOT3" onclick="buscarSlug()"><h1>Slug</h1></div>
+                </div>
+                <input class="in" id="in" type="text" placeholder=" " />
+                <!--Ests boton tiene que limpiar el input y la pantalla de Datos-->
+                <div class="clean" id="clean" onclick="Clean()"></div>
+              </div>
+              <div class="ot" id="ot">
+                <div class="ot1" id="ot1"></div>
+                <div class="ot2" id="ot2"></div>
+              </div>
+            </section>
+          </div>
+
+          <!--CONTENEDOR CENTRAL-->
+          <div class="Tcent" id="Tcent"></div>
+
+          <!--CONTENEDOR IZQUIERDO-->
+          <div class="TIzqu" id="TIzqu">
+            <section class="IU" id="IU">
+              <div class="cuaC" id="cuaC">
+                <div class="CB" id="CB">
+                  <div class="CN" id="CN">
+                    <div class="CC" id="CC">
+                      <div class="pru" id="pru"></div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="sem" id="sem">
+                <div class="CDA" id="CDA"><div class="CR" id="CR"></div></div>
+                <div class="CDA" id="CDA"><div class="CA" id="CA"></div></div>
+                <div class="CDA" id="CDA"><div class="CV" id="CV"></div></div>
+              </div>
+              <div class="cuai" id="cuai"></div>
+              <div class="triai" id="triai">
+                <div class="Identro"></div>
+              </div>
+            </section>
+            <section class="ID" id="ID">
+              <div class="screen" id="screen">
+                <div class="pantalla">
+                  <img id="pantalla" src="./assets/Nin.png" alt="Logo Nintendo" />
+                </div>
+                <div class="BDP" id="BDP">
+                  <div class="reset" id="reset" onclick="Inicio()"></div>
+                  <div class="bosinilla" id="bosinilla">
+                    <div class="rajada" id="rajada1"></div>
+                    <div class="rajada" id="rajada2"></div>
+                    <div class="rajada" id="rajada3"></div>
+                  </div>
+                </div>
+              </div>
+              <div class="BI" id="BI">
+                <div class="B1" id="B1"></div>
+                <div class="BP" id="BP">
+                  <div class="BP1" id="BP1"></div>
+                  <div class="BP2" id="BP2"></div>
+                </div>
+                <div class="BL" id="BL"></div>
+                <div class="fle" id="fle">
+                  <div class="up" id="up" onclick="siguiente()"></div>
+                  <div class="right" id="right" onclick="siguiente()"></div>
+                  <div class="down" id="down" onclick="anterior()"></div>
+                  <div class="left" id="left" onclick="anterior()"></div>
+                  <div class="cen" id="cen"></div>
+                </div>
+              </div>
+            </section>
+          </div>
+        </section>
+      </section>
+    </section>
+
+    <!---TAMBIEN SE PUEDE CAMBIAR 'onclick' por 'onchange'-->
+    <!-- <input id="nombre_personaje" />
+    <button onclick="hacer_busqueda()">buscar</button>
+    <div id="resultado"></div> -->
+  </body>
+</html>
