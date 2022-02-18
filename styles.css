@@ -568,6 +568,7 @@ body {
     width: 90%;
     grid-template-columns: 10fr 1fr;
     grid-template-rows: 1fr 1fr;
+    width: 390px;
   }
   .TDere {
     grid-column: 1;
