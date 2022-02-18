@@ -16,10 +16,10 @@ body {
   padding: 0px;
 }
 
-/*CONTENIDO DE LA PAGINA*/
+/*CONTENIDO DE LA PAGINA(Titulo+Pokedex)*/
 .NT {
   display: grid;
-  grid-template-columns: 59rem;
+  grid-template-columns: 1fr;
   grid-gap: 10px; /*Este puede que lo quitemos*/
   grid-template-rows: 1fr 7fr;
 }
@@ -46,15 +46,11 @@ body {
   display: grid;
   grid-template-columns: 47.5% 5% 47.5%;
   grid-template-rows: 1fr;
-  height: 40rem;
-  width: 90%;
+  width: 83%;
   margin-left: auto;
   margin-right: auto;
   margin-top: 10px;
   margin-bottom: 20px;
-  /* background-color: #f23030; */
-  /* border: 1px solid black; */
-  /* justify-content: center; */
 }
 /*PARTICION DE 'TODO*/
 .TDere {
@@ -192,14 +188,6 @@ body {
   border-radius: 50%;
   box-shadow: 3px 3px rgb(255, 255, 255);
 }
-/* .pru:hover {
-  z-index: -1;
-}
-.pru:hover,
-.CC:hover {
-  background-color: rgb(0, 119, 119);
-  box-shadow: 0px 0px;
-} */
 
 /*SEMAFORO SUPERIOR IZQUIERDO*/
 .sem {
@@ -554,4 +542,33 @@ body {
   width: 45%;
   border-radius: 20px;
   box-shadow: 3px 3px black;
+}
+
+@media screen and (max-width: 1000px) {
+  .todo {
+    width: 90%;
+  }
+
+  .DD,
+  .ID {
+    grid-template-columns: 1fr 12fr 1fr;
+  }
+
+  .TDere,
+  .TIzqu {
+    height: 630px;
+  }
+}
+
+@media screen and (max-width: 800px) {
+  .todo {
+    width: 90%;
+    grid-template-columns: 10fr 1fr;
+    grid-template-rows: 1fr 1fr;
+  }
+  .TDere {
+    grid-column: 1;
+    grid-row: 2;
+    height: 504px;
+  }
 }
