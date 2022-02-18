@@ -561,6 +561,9 @@ body {
 }
 
 @media screen and (max-width: 800px) {
+  .NT {
+    grid-template-rows: 0.5fr 7fr;
+  }
   .todo {
     width: 90%;
     grid-template-columns: 10fr 1fr;
