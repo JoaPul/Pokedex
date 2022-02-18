@@ -22,10 +22,7 @@ function buscar_personaje(Bus, dat) {
 }
 
 function buscarNom() {
-  let Bus = document.getElementById("in").value;
-  let dat = "name";
-  let res = buscar_personaje(Bus, dat);
-
+  let res = buscar_personaje(document.getElementById("in").value, "name");
   despliegue(res);
 }
 
@@ -48,18 +45,12 @@ function despliegue(res) {
 }
 
 function buscarID() {
-  let nombre = document.getElementById("in").value;
-  let dat = "ID";
-  let res = buscar_personaje(nombre, dat);
-
+  let res = buscar_personaje(document.getElementById("in").value, "ID");
   despliegue(res);
 }
 
 function buscarSlug() {
-  let nombre = document.getElementById("in").value;
-  let dat = "Slug";
-  let res = buscar_personaje(nombre, dat);
-
+  let res = buscar_personaje(document.getElementById("in").value, "Slug");
   despliegue(res);
 }
 
