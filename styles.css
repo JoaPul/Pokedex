@@ -46,7 +46,7 @@ body {
   display: grid;
   grid-template-columns: 47.5% 5% 47.5%;
   grid-template-rows: 1fr;
-  width: 83%;
+  width: 860px;
   margin-left: auto;
   margin-right: auto;
   margin-top: 10px;
@@ -558,6 +558,9 @@ body {
   .TIzqu {
     height: 630px;
   }
+  /* .TDere{
+    width:;
+  } */
 }
 
 @media screen and (max-width: 800px) {
