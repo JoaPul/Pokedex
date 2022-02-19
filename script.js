@@ -22,7 +22,10 @@ function buscar_personaje(Bus, dat) {
 }
 
 function buscarNom() {
-  let res = buscar_personaje(document.getElementById("in").value, "name");
+  let palabra = document.getElementById("in").value.toLowerCase().split("");
+  palabra[0] = palabra[0].toUpperCase();
+  palabra = palabra.join("");
+  let res = buscar_personaje(palabra, "name");
   despliegue(res);
 }
 
@@ -56,13 +59,13 @@ function buscarSlug() {
 
 function Clean() {
   document.getElementById("Datos").innerHTML = ` `;
-  document.getElementById("in").value = " ";
+  document.getElementById("in").value = "";
 }
 
 function Inicio() {
   document.getElementById("Datos").innerHTML = ` `;
   current = 0;
-  document.getElementById("in").value = " ";
+  document.getElementById("in").value = "";
   document.getElementById("pantalla").setAttribute("src", "./assets/Nin.png");
 }
 

@@ -68,6 +68,8 @@ body {
   border: 1px solid rgba(0, 0, 0, 0.363);
   background-color: #f23030;
   border-top-right-radius: 10px;
+  box-shadow: 3px 3px black;
+  z-index: 2;
 }
 .TIzqu {
   grid-column: 1;
@@ -85,11 +87,14 @@ body {
   justify-content: center;
   grid-template-columns: 1fr 1fr 1fr;
   grid-template-rows: 1fr 1fr;
+  z-index: 3;
 }
 .DD {
   border-top-right-radius: 10px;
   border-bottom-right-radius: 10px;
   background-color: #f23030;
+  box-shadow: 3px 3px black;
+  z-index: 3;
 }
 /*PARTICION IZQUIERDA*/
 .IU {
@@ -104,6 +109,8 @@ body {
   background-color: #b12525;
   height: auto;
   border-bottom-left-radius: 10px;
+  box-shadow: 3px 3px black;
+  z-index: 1;
 }
 /*ZONA DE ARRIBA AMBOS LADOS*/
 .cuad {
@@ -546,7 +553,7 @@ body {
 
 @media screen and (max-width: 1000px) {
   .todo {
-    width: 90%;
+    width: 752px;
   }
 
   .DD,
@@ -568,7 +575,6 @@ body {
     grid-template-rows: 0.5fr 7fr;
   }
   .todo {
-    width: 90%;
     grid-template-columns: 10fr 1fr;
     grid-template-rows: 1fr 1fr;
     width: 390px;
@@ -577,5 +583,9 @@ body {
     grid-column: 1;
     grid-row: 2;
     height: 504px;
+  }
+  .clean {
+    height: 37%;
+    width: 30%;
   }
 }
