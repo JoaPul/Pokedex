@@ -47,6 +47,22 @@ function despliegue(res) {
   }
 }
 
+const naranja = () => {
+  siguiente();
+  document.getElementById("Datos").innerHTML = "<h1></h1>";
+};
+
+const verde = () => {
+  anterior();
+  document.getElementById("Datos").innerHTML = "<h1></h1>";
+};
+
+const azul = () => {
+  if (current > 0) {
+    despliegue([true, json_file.results[current - 1], current]);
+  }
+};
+
 function buscarID() {
   let res = buscar_personaje(document.getElementById("in").value, "ID");
   despliegue(res);
@@ -70,21 +86,25 @@ function Inicio() {
 }
 
 function siguiente() {
-  current = current + 1;
-  if (current <= json_file.results.length) {
-    despliegue([true, json_file.results[current], current]);
-    // document.getElementById("ot1").setAttribute("value",current);
+  if (current < json_file.results.length) {
+    current = current + 1;
+    despliegue([true, json_file.results[current - 1], current]);
   } else {
-    current = current - 1;
+    current = json_file.results.length;
   }
 }
 
 function anterior() {
-  current = current - 1;
   if (current <= json_file.results.length && current > 0) {
-    despliegue([true, json_file.results[current], current]);
-    // document.getElementById("ot1").setAttribute("value",current);
+    current = current - 1;
+    if (current > 0) {
+      despliegue([true, json_file.results[current - 1], current]);
+    } else {
+      Inicio();
+    }
   } else {
-    document.getElementById("Datos").innerHTML = "<h1></h1>";
+    if (current == 0) {
+      Inicio();
+    }
   }
 }
