@@ -79,6 +79,9 @@ body {
   justify-content: center;
   grid-template-columns: 1fr;
   grid-template-rows: 1fr 4fr;
+  box-shadow: 3px 3px black;
+  z-index: 1;
+  border-bottom-left-radius: 10px;
 }
 /*PARTICION DERECHA*/
 .DU {
@@ -109,8 +112,6 @@ body {
   background-color: #b12525;
   height: auto;
   border-bottom-left-radius: 10px;
-  box-shadow: 3px 3px black;
-  z-index: 1;
 }
 /*ZONA DE ARRIBA AMBOS LADOS*/
 .cuad {
@@ -472,15 +473,14 @@ body {
   border-radius: 20px;
   background-color: rgb(94, 156, 255);
   display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-columns: 1fr 1fr;
   grid-template-rows: 1fr;
   box-shadow: 3px 3px black;
   /* row-gap: 5px; */
   height: 80%;
 }
 .BOT1,
-.BOT2,
-.BOT3 {
+.BOT2 {
   height: 75%;
   width: 90%;
   background-color: rgb(67, 110, 180);
@@ -494,15 +494,13 @@ body {
   box-shadow: 3px 3px black;
 }
 .BOT1 h1,
-.BOT2 h1,
-.BOT3 h1 {
+.BOT2 h1 {
   color: white;
   font-family: Arial;
   font-size: 20px;
 }
 .BOT1:hover,
-.BOT2:hover,
-.BOT3:hover {
+.BOT2:hover {
   background-color: rgb(43, 70, 116);
 }
 .in {
@@ -575,14 +573,50 @@ body {
     grid-template-rows: 0.5fr 7fr;
   }
   .todo {
-    grid-template-columns: 10fr 1fr;
-    grid-template-rows: 1fr 1fr;
+    grid-template-columns: 1fr;
+    grid-template-rows: 630px 35.6px 630px;
     width: 390px;
+  }
+  .TIzqu {
+    border-radius: 10px 10px 10px 10px;
+  }
+  .ID {
+    border-radius: 0px 0px 10px 10px;
+  }
+  .IU {
+    border-radius: 10px 10px 0 0;
+  }
+  .Tcent {
+    grid-column: 1;
+    grid-row: 2;
+    border-radius: 10px;
   }
   .TDere {
     grid-column: 1;
-    grid-row: 2;
+    grid-row: 3;
     height: 504px;
+    grid-template-rows: 4fr 1fr;
+  }
+  .DU {
+    grid-row: 2;
+    z-index: 4;
+  }
+  .DD {
+    border-radius: 10px 10px 0px 10px;
+    grid-row: 1;
+  }
+  .cuad {
+    grid-column: 3;
+    grid-row: 1;
+    box-shadow: 3px 3px black;
+  }
+  .triad {
+    grid-column: 2;
+    grid-row: 1;
+  }
+  .Ddentro {
+    clip-path: polygon(100% 0, 0 0, 100% 100%);
+    box-shadow: 3px 3px black;
   }
   .clean {
     height: 37%;
