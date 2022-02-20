@@ -68,11 +68,6 @@ function buscarID() {
   despliegue(res);
 }
 
-function buscarSlug() {
-  let res = buscar_personaje(document.getElementById("in").value, "Slug");
-  despliegue(res);
-}
-
 function Clean() {
   document.getElementById("Datos").innerHTML = ` `;
   document.getElementById("in").value = "";
@@ -108,3 +103,37 @@ function anterior() {
     }
   }
 }
+
+function imput() {
+  if (isNaN(document.getElementById("in").value)) {
+    buscarNom();
+  } else {
+    buscarID();
+  }
+}
+
+const nom = document.querySelector(".in");
+// const ble = document.querySelector(".left");
+// const bdo = document.querySelector(".down");
+// const bri = document.querySelector(".right");
+// const bup = document.querySelector(".up");
+
+nom.addEventListener("keydown", (e) => {
+  /*Aqui evaluamos las teclas para usar 'enter' para que funcione*/
+  // console.log(e);
+  if (e.keyCode === 13) {
+    return imput();
+  }
+});
+
+// window.addEventListener("keydown", (k) => {
+//   if (k.key === 37) {
+//     return anterior();
+//   } else if (k.key === 38) {
+//     return siguiente();
+//   } else if (k.key === 39) {
+//     return siguiente();
+//   } else if (k.key === 40) {
+//     return anterior();
+//   }
+// });
