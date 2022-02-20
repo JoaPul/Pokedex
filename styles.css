@@ -608,7 +608,7 @@ body {
   .cuad {
     grid-column: 3;
     grid-row: 1;
-    box-shadow: 3px 3px black;
+    box-shadow: 3px 0px black;
   }
   .triad {
     grid-column: 2;
