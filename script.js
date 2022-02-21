@@ -113,10 +113,6 @@ function imput() {
 }
 
 const nom = document.querySelector(".in");
-// const ble = document.querySelector(".left");
-// const bdo = document.querySelector(".down");
-// const bri = document.querySelector(".right");
-// const bup = document.querySelector(".up");
 
 nom.addEventListener("keydown", (e) => {
   /*Aqui evaluamos las teclas para usar 'enter' para que funcione*/
