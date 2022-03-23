@@ -39,10 +39,8 @@ async function buscar_personaje(Bus, dat) {
 }
 
 function buscarNom() {
+  // document.getElementById("Datos").setAttribute("style", "color: white;");
   let palabra = document.getElementById("in").value.toLowerCase();
-  // .split("")
-  // palabra[0] = palabra[0].toUpperCase();
-  // palabra = palabra.join("");
   buscar_personaje(palabra, "name");
 }
 
@@ -79,29 +77,25 @@ function despliegue(res) {
 
 const naranja = () => {
   document.getElementById("Datos").setAttribute("style", "color: black;");
-  siguiente();
-  setTimeout(() => {
-    Clean();
-    document.getElementById("Datos").setAttribute("style", "color: white;");
-  }, 8);
+  siguientee();
+  Clean();
 };
 
 const verde = () => {
   document.getElementById("Datos").setAttribute("style", "color: black;");
-  anterior();
-  setTimeout(() => {
-    Clean();
-    document.getElementById("Datos").setAttribute("style", "color: white;");
-  }, 8);
+  anteriorr();
+  Clean();
 };
 
 const azul = () => {
   if (current > 0) {
     buscar_personaje(current, "ID");
   }
+  document.getElementById("Datos").setAttribute("style", "color: white;");
 };
 
 function buscarID() {
+  // document.getElementById("Datos").setAttribute("style", "color: white;");
   let res = buscar_personaje(document.getElementById("in").value, "ID");
   buscar_personaje(res, "ID");
 }
@@ -118,6 +112,40 @@ function Inicio() {
   document.getElementById("pantalla").setAttribute("src", "./assets/Nin.png");
 }
 
+function siguientee() {
+  config.url = "https://pokeapi.co/api/v2/pokemon?limit=1126";
+  axios(config)
+    .then((response) => {
+      if (current < response.data.results.length) {
+        current += 1;
+        buscar_personaje(current, "ID");
+      } else {
+        buscar_personaje(current, "ID");
+      }
+      // document.getElementById("Datos").setAttribute("style", "color: white;");
+    })
+    .catch((error) => console.log(error));
+}
+
+function anteriorr() {
+  config.url = "https://pokeapi.co/api/v2/pokemon?limit=1126";
+  axios(config)
+    .then((response) => {
+      if (current <= response.data.results.length && current > 0) {
+        current -= 1;
+        if (current > 0) {
+          buscar_personaje(current, "ID");
+        } else {
+          Inicio();
+        }
+      } else {
+        Inicio();
+      }
+      // document.getElementById("Datos").setAttribute("style", "color: white;");
+    })
+    .catch((error) => console.log(error));
+}
+
 function siguiente() {
   config.url = "https://pokeapi.co/api/v2/pokemon?limit=1126";
   axios(config)
@@ -128,6 +156,7 @@ function siguiente() {
       } else {
         buscar_personaje(current, "ID");
       }
+      document.getElementById("Datos").setAttribute("style", "color: white;");
     })
     .catch((error) => console.log(error));
 }
@@ -146,6 +175,7 @@ function anterior() {
       } else {
         Inicio();
       }
+      document.getElementById("Datos").setAttribute("style", "color: white;");
     })
     .catch((error) => console.log(error));
 }
