@@ -1,46 +1,76 @@
 const json_file = JSON.parse(poke_file);
-let current = 0;
-console.log(json_file.results);
 
-function buscar_personaje(Bus, dat) {
+// const axios = require("axios"); No se necesita
+
+let config = {
+  method: "get",
+  url: "https://pokeapi.co/api/v2/pokemon?limit=1126",
+  headers: {},
+};
+
+let current = 0;
+async function buscar_personaje(Bus, dat) {
   let ac = false;
-  let datt = false;
-  for (let i = 0; i < json_file.results.length; i++) {
-    if (dat == "name") {
-      datt = json_file.results[i].name;
-    } else if (dat == "ID") {
-      datt = json_file.results[i].id;
-    } else {
-      datt = json_file.results[i].slug;
-    }
-    if (datt == Bus) {
-      ac = true;
-      return [ac, json_file.results[i], i];
-    }
-  }
-  return [ac, json_file.results[0], 0];
+  config.url = "https://pokeapi.co/api/v2/pokemon?limit=1126";
+  axios(config)
+    .then((response) => {
+      for (let i = 0; i < response.data.results.length; i++) {
+        if (dat == "name") {
+          if (response.data.results[i].name == Bus) {
+            ac = true;
+            console.log(response.data.results[i].name);
+            despliegue([ac, response.data.results[i].url, i]);
+          }
+        } else if (dat == "ID") {
+          if (i + 1 == Bus) {
+            ac = true;
+            console.log(i);
+            despliegue([ac, response.data.results[i].url, i]);
+          }
+        }
+      }
+      if (ac == false) {
+        despliegue([ac, null, 0]);
+      }
+    })
+    .catch((error) => {
+      console.log(error);
+    });
 }
 
 function buscarNom() {
-  let palabra = document.getElementById("in").value.toLowerCase().split("");
-  palabra[0] = palabra[0].toUpperCase();
-  palabra = palabra.join("");
-  let res = buscar_personaje(palabra, "name");
-  despliegue(res);
+  let palabra = document.getElementById("in").value.toLowerCase();
+  // .split("")
+  // palabra[0] = palabra[0].toUpperCase();
+  // palabra = palabra.join("");
+  buscar_personaje(palabra, "name");
 }
 
 function despliegue(res) {
   if (res[0]) {
-    document.getElementById("Datos").innerHTML = `
-        <li>Name: ${res[1].name}</li>
-        <li>ID: ${res[1].id}</li>
-        <li>Type: ${res[1].type}</li>
-        <li>Abilities: ${res[1].abilities}</li>
-        <li>Weakness: ${res[1].weakness}</li>
-         `;
-    document.getElementById("pantalla").setAttribute("src", res[1].ThumbnailImage);
-    current = res[2];
-    console.log(current);
+    console.log(res[1]);
+    config.url = res[1];
+    let types = [];
+    axios(config)
+      .then((rasponse) => {
+        current = res[2];
+        let name = rasponse.data.name.split("");
+        name[0] = name[0].toUpperCase();
+        name = name.join("");
+        rasponse.data.types.forEach((ele) => types.push(" " + ele.type.name));
+        document.getElementById("Datos").innerHTML = `
+      <li id = "dat">Name: ${name}</li>
+      <li id = "dat">Type: ${types}</li>
+      <li id = "dat">Height: ${rasponse.data.height}</li>
+      <li id = "dat">Weight: ${rasponse.data.weight}</li> `;
+        document.getElementById("pantalla").setAttribute("src", rasponse.data.sprites.front_default);
+        // document.getElementById("pantalla").setAttribute("src", res[1].ThumbnailImage);
+        current = res[2] + 1;
+        console.log(current);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
   } else {
     document.getElementById("Datos").innerHTML = "<h1>¿Quién es ese Pokemon?</h1>";
     document.getElementById("pantalla").setAttribute("src", "./assets/whos.png");
@@ -48,24 +78,32 @@ function despliegue(res) {
 }
 
 const naranja = () => {
+  document.getElementById("Datos").setAttribute("style", "color: black;");
   siguiente();
-  document.getElementById("Datos").innerHTML = "<h1></h1>";
+  setTimeout(() => {
+    Clean();
+    document.getElementById("Datos").setAttribute("style", "color: white;");
+  }, 8);
 };
 
 const verde = () => {
+  document.getElementById("Datos").setAttribute("style", "color: black;");
   anterior();
-  document.getElementById("Datos").innerHTML = "<h1></h1>";
+  setTimeout(() => {
+    Clean();
+    document.getElementById("Datos").setAttribute("style", "color: white;");
+  }, 8);
 };
 
 const azul = () => {
   if (current > 0) {
-    despliegue([true, json_file.results[current - 1], current]);
+    buscar_personaje(current, "ID");
   }
 };
 
 function buscarID() {
   let res = buscar_personaje(document.getElementById("in").value, "ID");
-  despliegue(res);
+  buscar_personaje(res, "ID");
 }
 
 function Clean() {
@@ -81,27 +119,35 @@ function Inicio() {
 }
 
 function siguiente() {
-  if (current < json_file.results.length) {
-    current = current + 1;
-    despliegue([true, json_file.results[current - 1], current]);
-  } else {
-    current = json_file.results.length;
-  }
+  config.url = "https://pokeapi.co/api/v2/pokemon?limit=1126";
+  axios(config)
+    .then((response) => {
+      if (current < response.data.results.length) {
+        current += 1;
+        buscar_personaje(current, "ID");
+      } else {
+        buscar_personaje(current, "ID");
+      }
+    })
+    .catch((error) => console.log(error));
 }
 
 function anterior() {
-  if (current <= json_file.results.length && current > 0) {
-    current = current - 1;
-    if (current > 0) {
-      despliegue([true, json_file.results[current - 1], current]);
-    } else {
-      Inicio();
-    }
-  } else {
-    if (current == 0) {
-      Inicio();
-    }
-  }
+  config.url = "https://pokeapi.co/api/v2/pokemon?limit=1126";
+  axios(config)
+    .then((response) => {
+      if (current <= response.data.results.length && current > 0) {
+        current -= 1;
+        if (current > 0) {
+          buscar_personaje(current, "ID");
+        } else {
+          Inicio();
+        }
+      } else {
+        Inicio();
+      }
+    })
+    .catch((error) => console.log(error));
 }
 
 function imput() {
