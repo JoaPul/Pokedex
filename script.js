@@ -1,4 +1,4 @@
-const json_file = JSON.parse(poke_file);
+// const json_file = JSON.parse(poke_file);
 
 // const axios = require("axios"); No se necesita
 
