@@ -1,5 +1,3 @@
-// const json_file = JSON.parse(poke_file);
-
 // const axios = require("axios"); No se necesita
 
 let config = {
@@ -39,7 +37,6 @@ async function buscar_personaje(Bus, dat) {
 }
 
 function buscarNom() {
-  // document.getElementById("Datos").setAttribute("style", "color: white;");
   let palabra = document.getElementById("in").value.toLowerCase();
   buscar_personaje(palabra, "name");
 }
@@ -95,7 +92,6 @@ const azul = () => {
 };
 
 function buscarID() {
-  // document.getElementById("Datos").setAttribute("style", "color: white;");
   let res = buscar_personaje(document.getElementById("in").value, "ID");
   buscar_personaje(res, "ID");
 }
@@ -122,7 +118,6 @@ function siguientee() {
       } else {
         buscar_personaje(current, "ID");
       }
-      // document.getElementById("Datos").setAttribute("style", "color: white;");
     })
     .catch((error) => console.log(error));
 }
@@ -141,7 +136,6 @@ function anteriorr() {
       } else {
         Inicio();
       }
-      // document.getElementById("Datos").setAttribute("style", "color: white;");
     })
     .catch((error) => console.log(error));
 }
@@ -192,7 +186,6 @@ const nom = document.querySelector(".in");
 
 nom.addEventListener("keydown", (e) => {
   /*Aqui evaluamos las teclas para usar 'enter' para que funcione*/
-  // console.log(e);
   if (e.keyCode === 13) {
     return imput();
   }
