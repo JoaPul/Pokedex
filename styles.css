@@ -357,9 +357,9 @@ body {
   height: 50%;
   width: 100%;
 }
-/* .BL:hover {
+.BL:hover {
   background-color: rgb(141, 141, 38);
-} */
+}
 .fle {
   grid-column: 3;
   grid-row-start: 1;

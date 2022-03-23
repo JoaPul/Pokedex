@@ -191,6 +191,17 @@ nom.addEventListener("keydown", (e) => {
   }
 });
 
+let val = true;
+
+const playy = () => {
+  if (val) {
+    val = false;
+    document.getElementById("audio").play();
+  } else {
+    val = true;
+    document.getElementById("audio").pause();
+  }
+};
 // window.addEventListener("keydown", (k) => {
 //   if (k.key === 37) {
 //     return anterior();
