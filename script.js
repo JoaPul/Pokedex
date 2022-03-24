@@ -59,7 +59,7 @@ function despliegue(res) {
       <li id = "dat">Height: ${rasponse.data.height}</li>
       <li id = "dat">Weight: ${rasponse.data.weight}</li> `;
         document.getElementById("pantalla").setAttribute("src", rasponse.data.sprites.front_default);
-        // document.getElementById("pantalla").setAttribute("src", res[1].ThumbnailImage);
+
         current = res[2] + 1;
         console.log(current);
       })
@@ -69,6 +69,7 @@ function despliegue(res) {
   } else {
     document.getElementById("Datos").innerHTML = "<h1>¿Quién es ese Pokemon?</h1>";
     document.getElementById("pantalla").setAttribute("src", "./assets/whos.png");
+    document.getElementById("Datos").setAttribute("style", "color: white;");
   }
 }
 
@@ -89,6 +90,7 @@ const azul = () => {
     buscar_personaje(current, "ID");
   }
   document.getElementById("Datos").setAttribute("style", "color: white;");
+  document.getElementById("az").play();
 };
 
 function buscarID() {
@@ -106,6 +108,7 @@ function Inicio() {
   current = 0;
   document.getElementById("in").value = "";
   document.getElementById("pantalla").setAttribute("src", "./assets/Nin.png");
+  document.getElementById("ini").play();
 }
 
 function siguientee() {
@@ -202,6 +205,7 @@ const playy = () => {
     document.getElementById("audio").pause();
   }
 };
+
 // window.addEventListener("keydown", (k) => {
 //   if (k.key === 37) {
 //     return anterior();

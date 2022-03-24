@@ -563,9 +563,6 @@ body {
   .TIzqu {
     height: 630px;
   }
-  /* .TDere{
-    width:;
-  } */
 }
 
 @media screen and (max-width: 800px) {
@@ -619,7 +616,14 @@ body {
     box-shadow: 3px 3px black;
   }
   .clean {
-    height: 37%;
-    width: 30%;
+    height: 39%;
+    width: 29%;
+  }
+  .B1 {
+    height: 37px;
+    width: 37px;
+  }
+  .fle {
+    grid-template-columns: 1fr 1.5fr 1.5fr 1.5fr 1fr;
   }
 }
