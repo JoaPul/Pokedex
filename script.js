@@ -144,7 +144,6 @@ function anteriorr() {
 }
 
 function siguiente() {
-  document.getElementById("ne").play();
   config.url = "https://pokeapi.co/api/v2/pokemon?limit=1126";
   axios(config)
     .then((response) => {
@@ -160,7 +159,6 @@ function siguiente() {
 }
 
 function anterior() {
-  document.getElementById("pr").play();
   config.url = "https://pokeapi.co/api/v2/pokemon?limit=1126";
   axios(config)
     .then((response) => {
