@@ -42,35 +42,38 @@ function buscarNom() {
 }
 
 function despliegue(res) {
-  if (res[0]) {
-    console.log(res[1]);
-    config.url = res[1];
-    let types = [];
-    axios(config)
-      .then((rasponse) => {
-        current = res[2];
-        let name = rasponse.data.name.split("");
-        name[0] = name[0].toUpperCase();
-        name = name.join("");
-        rasponse.data.types.forEach((ele) => types.push(" " + ele.type.name));
-        document.getElementById("Datos").innerHTML = `
+  document.getElementById("Datos").innerHTML = `<p>CARGANDO...</p>`;
+  setTimeout(() => {
+    if (res[0]) {
+      console.log(res[1]);
+      config.url = res[1];
+      let types = [];
+      axios(config)
+        .then((rasponse) => {
+          current = res[2];
+          let name = rasponse.data.name.split("");
+          name[0] = name[0].toUpperCase();
+          name = name.join("");
+          rasponse.data.types.forEach((ele) => types.push(" " + ele.type.name));
+          document.getElementById("Datos").innerHTML = `
       <li id = "dat">Name: ${name}</li>
       <li id = "dat">Type: ${types}</li>
       <li id = "dat">Height: ${rasponse.data.height}</li>
       <li id = "dat">Weight: ${rasponse.data.weight}</li> `;
-        document.getElementById("pantalla").setAttribute("src", rasponse.data.sprites.front_default);
+          document.getElementById("pantalla").setAttribute("src", rasponse.data.sprites.front_default);
 
-        current = res[2] + 1;
-        console.log(current);
-      })
-      .catch((error) => {
-        console.log(error);
-      });
-  } else {
-    document.getElementById("Datos").innerHTML = "<h1>¿Quién es ese Pokemon?</h1>";
-    document.getElementById("pantalla").setAttribute("src", "./assets/whos.png");
-    document.getElementById("Datos").setAttribute("style", "color: white;");
-  }
+          current = res[2] + 1;
+          console.log(current);
+        })
+        .catch((error) => {
+          console.log(error);
+        });
+    } else {
+      document.getElementById("Datos").innerHTML = "<h1>¿Quién es ese Pokemon?</h1>";
+      document.getElementById("pantalla").setAttribute("src", "./assets/whos.png");
+      document.getElementById("Datos").setAttribute("style", "color: white;");
+    }
+  }, 1500);
 }
 
 const naranja = () => {
