@@ -93,6 +93,8 @@ const azul = () => {
   document.getElementById("az").play();
 };
 
+// Despues de "calyrex", ya no sigue la secuncia de ID la URL
+// "lurantis-totem" y mas despues de este no tiene foto
 function buscarID() {
   document.getElementById("Datos").innerHTML = `<p>CARGANDO...</p>`;
   setTimeout(() => {
