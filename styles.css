@@ -459,6 +459,10 @@ body {
   font-size: 25px;
 }
 
+#det {
+  color: rgb(101, 101, 175);
+}
+
 /*OPCIONES PARA BUSCAR*/
 .ops {
   grid-column: 2;

@@ -7,8 +7,9 @@ let config = {
 };
 
 let current = 0;
+let son = 0;
 
-async function buscar_personaje(Bus, dat) {
+async function buscar_personaje(Bus, dat, son = 0) {
   config.url = "https://pokeapi.co/api/v2/pokemon?limit=1126";
   axios(config)
     .then((response) => {
@@ -16,13 +17,13 @@ async function buscar_personaje(Bus, dat) {
         if (dat == "name") {
           if (response.data.results[i].name == Bus) {
             console.log(response.data.results[i].name);
-            despliegue([response.data.results[i].url, i]);
+            despliegue([response.data.results[i].url, i], son);
             break;
           }
         } else if (dat == "ID") {
           if (i + 1 == Bus) {
             console.log("i" + i);
-            despliegue([response.data.results[i].url, i]);
+            despliegue([response.data.results[i].url, i], son);
             break;
           }
         }
@@ -43,7 +44,8 @@ function buscarNom() {
         arr.push(response.data.results[i].name);
       }
       if (arr.includes(palabra)) {
-        buscar_personaje(palabra, "name");
+        son = 1;
+        buscar_personaje(palabra, "name", son);
       } else {
         document.getElementById("WTP").play();
         document.getElementById("Datos").innerHTML = "<h1>¿Quién es ese Pokemon?</h1>";
@@ -56,7 +58,7 @@ function buscarNom() {
     });
 }
 
-function despliegue(res) {
+function despliegue(res, son = 0) {
   console.log(res[0]);
   config.url = res[0];
   if (res[0] != null) {
@@ -69,20 +71,48 @@ function despliegue(res) {
         name = name.join("");
         rasponse.data.types.forEach((ele) => types.push(" " + ele.type.name));
         document.getElementById("Datos").innerHTML = `
-      <li id = "dat">Name: ${name}</li>
-      <li id = "dat">Type: ${types}</li>
-      <li id = "dat">Height: ${rasponse.data.height}</li>
-      <li id = "dat">Weight: ${rasponse.data.weight}</li> `;
+          <ul>  
+            <li id = "dat">Name: ${name}</li>
+            <li id = "dat">Type: ${types}</li>
+            <li id = "dat">Moves: </li>
+            <br>
+            <ul>
+              <li id = "dat" >${rasponse.data.moves[0].move.name}</li> 
+              <li id = "dat" >${rasponse.data.moves[1].move.name}</li>
+            </ul>
+          </ul>
+          `;
         document.getElementById("pantalla").setAttribute("src", rasponse.data.sprites.front_default);
 
         current = res[1] + 1;
         console.log(current);
+
+        Pokeditails(rasponse.data.species.url, name, types[0], son);
       })
       .catch((error) => {
         console.log("despliegue");
       });
   }
 }
+
+// falta cambiar el nombre y su tipo a español
+const Pokeditails = (url, name, types, son) => {
+  if (son == 1) {
+    config.url = url;
+    axios(config.url)
+      .then((res) => {
+        let detalles = res.data.flavor_text_entries.filter((detail) => detail.language.name === "es");
+        let detail1 = detalles[0].flavor_text.replace(/\n/g, " ");
+        let detail2 = detalles[1].flavor_text.replace(/\n/g, " ");
+        let detail3 = detalles[2].flavor_text.replace(/\n/g, " ");
+
+        speechSynthesis.speak(new SpeechSynthesisUtterance(`${name}. Pokemon tipo ${types}. ${detail1}, ${detail2}, ${detail3}`));
+      })
+      .catch((error) => {
+        console.log("Pokeditails");
+      });
+  }
+};
 
 const naranja = () => {
   document.getElementById("Datos").setAttribute("style", "color: black;");
@@ -108,7 +138,7 @@ const azul = () => {
 
 // Despues de "calyrex", ya no sigue la secuncia de ID la URL
 // "lurantis-totem" y mas despues de este no tiene foto
-//QUE SOLO ACEPTE ENTEROS
+// QUE SOLO ACEPTE ENTEROS
 function buscarID() {
   // document.getElementById("Datos").innerHTML = `<p>CARGANDO...</p>`;
   let a = document.getElementById("in").value;
@@ -119,8 +149,8 @@ function buscarID() {
     document.getElementById("pantalla").setAttribute("src", "./assets/whos.png");
     document.getElementById("Datos").setAttribute("style", "color: white;");
   } else {
-    let res = buscar_personaje(a, "ID");
-    buscar_personaje(res, "ID");
+    son = 1;
+    buscar_personaje(a, "ID", son);
   }
 }
 
