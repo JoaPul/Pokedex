@@ -12,15 +12,12 @@ async function buscar_personaje(Bus, dat) {
   config.url = "https://pokeapi.co/api/v2/pokemon?limit=1126";
   axios(config)
     .then((response) => {
-      let b = 0;
       for (let i = 0; i < response.data.results.length; i++) {
         if (dat == "name") {
           if (response.data.results[i].name == Bus) {
             console.log(response.data.results[i].name);
             despliegue([response.data.results[i].url, i]);
             break;
-          } else {
-            b = 1;
           }
         } else if (dat == "ID") {
           if (i + 1 == Bus) {
@@ -30,7 +27,25 @@ async function buscar_personaje(Bus, dat) {
           }
         }
       }
-      if (b === 1) {
+    })
+    .catch((error) => {
+      console.log(error);
+    });
+}
+
+function buscarNom() {
+  config.url = "https://pokeapi.co/api/v2/pokemon?limit=1126";
+  let arr = [];
+  let palabra = document.getElementById("in").value.toLowerCase();
+  axios(config)
+    .then((response) => {
+      for (let i = 0; i < response.data.results.length; i++) {
+        arr.push(response.data.results[i].name);
+      }
+      if (arr.includes(palabra)) {
+        buscar_personaje(palabra, "name");
+      } else {
+        document.getElementById("WTP").play();
         document.getElementById("Datos").innerHTML = "<h1>¿Quién es ese Pokemon?</h1>";
         document.getElementById("pantalla").setAttribute("src", "./assets/whos.png");
         document.getElementById("Datos").setAttribute("style", "color: white;");
@@ -39,11 +54,6 @@ async function buscar_personaje(Bus, dat) {
     .catch((error) => {
       console.log(error);
     });
-}
-
-function buscarNom() {
-  let palabra = document.getElementById("in").value.toLowerCase();
-  buscar_personaje(palabra, "name");
 }
 
 function despliegue(res) {
@@ -104,6 +114,7 @@ function buscarID() {
   let a = document.getElementById("in").value;
   console.log(a);
   if (a > 1126 || a < 1 || a % 1 != 0) {
+    document.getElementById("WTP").play();
     document.getElementById("Datos").innerHTML = "<h1>¿Quién es ese Pokemon?</h1>";
     document.getElementById("pantalla").setAttribute("src", "./assets/whos.png");
     document.getElementById("Datos").setAttribute("style", "color: white;");
