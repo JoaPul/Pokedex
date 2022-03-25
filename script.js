@@ -98,11 +98,11 @@ const azul = () => {
 // Despues de "calyrex", ya no sigue la secuncia de ID la URL
 // "lurantis-totem" y mas despues de este no tiene foto
 function buscarID() {
-  document.getElementById("Datos").innerHTML = `<p>CARGANDO...</p>`;
-  setTimeout(() => {
-    let res = buscar_personaje(document.getElementById("in").value, "ID");
-    buscar_personaje(res, "ID");
-  }, 2500);
+  // document.getElementById("Datos").innerHTML = `<p>CARGANDO...</p>`;
+  // setTimeout(() => {
+  let res = buscar_personaje(document.getElementById("in").value, "ID");
+  buscar_personaje(res, "ID");
+  // }, 2500);
 }
 
 function Clean() {
