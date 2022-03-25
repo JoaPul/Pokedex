@@ -86,10 +86,12 @@ const verde = () => {
 };
 
 const azul = () => {
-  if (current > 0) {
-    buscar_personaje(current, "ID");
-  }
-  document.getElementById("Datos").setAttribute("style", "color: white;");
+  setTimeout(() => {
+    if (current > 0) {
+      buscar_personaje(current, "ID");
+    }
+    document.getElementById("Datos").setAttribute("style", "color: white;");
+  }, 1000);
   document.getElementById("az").play();
 };
 
