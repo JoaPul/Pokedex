@@ -92,7 +92,7 @@ const azul = () => {
       buscar_personaje(current, "ID");
     }
     document.getElementById("Datos").setAttribute("style", "color: white;");
-  }, 1000);
+  }, 500);
   document.getElementById("az").play();
 };
 
