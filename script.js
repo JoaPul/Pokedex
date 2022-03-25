@@ -7,28 +7,33 @@ let config = {
 };
 
 let current = 0;
+
 async function buscar_personaje(Bus, dat) {
-  let ac = false;
   config.url = "https://pokeapi.co/api/v2/pokemon?limit=1126";
   axios(config)
     .then((response) => {
+      let b = 0;
       for (let i = 0; i < response.data.results.length; i++) {
         if (dat == "name") {
           if (response.data.results[i].name == Bus) {
-            ac = true;
             console.log(response.data.results[i].name);
-            despliegue([ac, response.data.results[i].url, i]);
+            despliegue([response.data.results[i].url, i]);
+            break;
+          } else {
+            b = 1;
           }
         } else if (dat == "ID") {
           if (i + 1 == Bus) {
-            ac = true;
-            console.log(i);
-            despliegue([ac, response.data.results[i].url, i]);
+            console.log("i" + i);
+            despliegue([response.data.results[i].url, i]);
+            break;
           }
         }
       }
-      if (ac == false) {
-        despliegue([ac, null, 0]);
+      if (b === 1) {
+        document.getElementById("Datos").innerHTML = "<h1>¿Quién es ese Pokemon?</h1>";
+        document.getElementById("pantalla").setAttribute("src", "./assets/whos.png");
+        document.getElementById("Datos").setAttribute("style", "color: white;");
       }
     })
     .catch((error) => {
@@ -42,13 +47,13 @@ function buscarNom() {
 }
 
 function despliegue(res) {
-  if (res[0]) {
-    console.log(res[1]);
-    config.url = res[1];
+  console.log(res[0]);
+  config.url = res[0];
+  if (res[0] != null) {
     let types = [];
     axios(config)
       .then((rasponse) => {
-        current = res[2];
+        current = res[1];
         let name = rasponse.data.name.split("");
         name[0] = name[0].toUpperCase();
         name = name.join("");
@@ -60,16 +65,12 @@ function despliegue(res) {
       <li id = "dat">Weight: ${rasponse.data.weight}</li> `;
         document.getElementById("pantalla").setAttribute("src", rasponse.data.sprites.front_default);
 
-        current = res[2] + 1;
+        current = res[1] + 1;
         console.log(current);
       })
       .catch((error) => {
-        console.log(error);
+        console.log("despliegue");
       });
-  } else {
-    document.getElementById("Datos").innerHTML = "<h1>¿Quién es ese Pokemon?</h1>";
-    document.getElementById("pantalla").setAttribute("src", "./assets/whos.png");
-    document.getElementById("Datos").setAttribute("style", "color: white;");
   }
 }
 
@@ -97,12 +98,19 @@ const azul = () => {
 
 // Despues de "calyrex", ya no sigue la secuncia de ID la URL
 // "lurantis-totem" y mas despues de este no tiene foto
+//QUE SOLO ACEPTE ENTEROS
 function buscarID() {
   // document.getElementById("Datos").innerHTML = `<p>CARGANDO...</p>`;
-  // setTimeout(() => {
-  let res = buscar_personaje(document.getElementById("in").value, "ID");
-  buscar_personaje(res, "ID");
-  // }, 2500);
+  let a = document.getElementById("in").value;
+  console.log(a);
+  if (a > 1126 || a < 1 || a % 1 != 0) {
+    document.getElementById("Datos").innerHTML = "<h1>¿Quién es ese Pokemon?</h1>";
+    document.getElementById("pantalla").setAttribute("src", "./assets/whos.png");
+    document.getElementById("Datos").setAttribute("style", "color: white;");
+  } else {
+    let res = buscar_personaje(a, "ID");
+    buscar_personaje(res, "ID");
+  }
 }
 
 function Clean() {
@@ -125,6 +133,7 @@ function siguientee() {
       if (current < response.data.results.length) {
         current += 1;
         buscar_personaje(current, "ID");
+        // console.log(current);
       } else {
         buscar_personaje(current, "ID");
       }
@@ -156,6 +165,7 @@ function siguiente() {
     .then((response) => {
       if (current < response.data.results.length) {
         current += 1;
+        // console.log(current);
         buscar_personaje(current, "ID");
       } else {
         buscar_personaje(current, "ID");
