@@ -72,9 +72,9 @@ function despliegue(res, son = 0) {
         rasponse.data.types.forEach((ele) => types.push(" " + ele.type.name));
         document.getElementById("Datos").innerHTML = `
           <ul>  
-            <li id = "dat">Name: ${name}</li>
-            <li id = "dat">Type: ${types}</li>
-            <li id = "dat">Moves: </li>
+            <li id = "dat">Nombre: ${name}</li>
+            <li id = "dat">Tipo: ${types}</li>
+            <li id = "dat">Movimientos: </li>
             <br>
             <ul>
               <li id = "dat" >${rasponse.data.moves[0].move.name}</li> 
