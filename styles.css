@@ -620,7 +620,7 @@ body {
   .TDere {
     grid-column: 1;
     grid-row: 3;
-    height: 504px;
+    height: 630px;
     grid-template-rows: 4fr 1fr;
   }
   .DU {
