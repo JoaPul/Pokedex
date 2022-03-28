@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="./styles.css" />
     <link rel="shortcut icon" href="./assets/pokebola.png" type="image/x-icon" />
+    <link href="https://fonts.googleapis.com/css2?family=Fredoka&display=swap" rel="stylesheet" />
     <script type="text/javascript" src="./pokeapi.js"></script>
     <title>Pokedex</title>
   </head>
@@ -29,19 +30,16 @@
               <div class="Datos" id="Datos"></div>
               <div class="ops" id="ops">
                 <div class="BOT" id="BOT">
-                  <!--en la funcion puedes poner como atributo si es "name" o "id"-->
                   <div class="BOT1" id="BOT1" onclick="buscarNom()"><h1>Name</h1></div>
                   <div class="BOT2" id="BOT2" onclick="buscarID()"><h1>ID</h1></div>
-                  <!--nombre estandarizado en minusculas-->
-                  <!-- <div class="BOT3" id="BOT3" onclick="buscarSlug()"><h1>Slug</h1></div> -->
                 </div>
                 <input class="in" id="in" type="text" placeholder="" />
-                <!--Ests boton tiene que limpiar el input y la pantalla de Datos-->
+                <!--Estes boton tiene que limpiar el input y la pantalla de Datos -->
                 <div class="clean" id="clean" onclick="Clean()"></div>
               </div>
               <div class="ot" id="ot">
-                <div class="ot1" id="ot1"></div>
-                <div class="ot2" id="ot2"></div>
+                <div class="ot1" id="ot1" onclick="Details()"><h1>Details</h1></div>
+                <div class="ot2" id="ot2" onclick="ayuda()"><h1>Help</h1></div>
               </div>
             </section>
           </div>
@@ -73,7 +71,7 @@
             </section>
             <section class="ID" id="ID">
               <div class="screen" id="screen">
-                <div class="pantalla">
+                <div class="pantalla" id="pan">
                   <img id="pantalla" src="./assets/Nin.png" alt="Logo Nintendo" />
                 </div>
                 <div class="BDP" id="BDP">
@@ -104,10 +102,7 @@
           </div>
         </section>
       </section>
-      <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
-      <script type="text/javascript" src="./script.js"></script>
     </section>
-
     <!---TAMBIEN SE PUEDE CAMBIAR 'onclick' por 'onchange'-->
     <!-- <input id="nombre_personaje" />
     <button onclick="hacer_busqueda()">buscar</button>
@@ -125,8 +120,11 @@
       <source src="./assets/blue.ogg" type="audio/ogg" />
     </audio>
     <audio id="WTP">
-      <source src="./assets/WTP.mp3" type="audio/mp3" />
-      <source src="./assets/WTP.ogg" type="audio/ogg" />
+      <source src="./assets/WTPen.mp3" type="audio/mp3" />
+      <source src="./assets/WTPen.ogg" type="audio/ogg" />
     </audio>
+    <style type="text/css" id="style"></style>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script type="text/javascript" src="./script.js"></script>
   </body>
 </html>

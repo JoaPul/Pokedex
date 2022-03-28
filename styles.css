@@ -14,10 +14,13 @@ body {
   align-items: center;
   margin: 0px;
   padding: 0px;
+  position: absolute;
+  width: 100%;
 }
 
 /*CONTENIDO DE LA PAGINA(Titulo+Pokedex)*/
 .NT {
+  position: relative;
   display: grid;
   grid-template-columns: 1fr;
   grid-gap: 10px; /*Este puede que lo quitemos*/
@@ -34,7 +37,7 @@ body {
   margin-right: auto;
 }
 .Titulo h1 {
-  font-family: Arial;
+  font-family: Fredoka;
   font-size: 4rem;
   /* border: 1px solid black; */
   color: #f2cb05;
@@ -452,7 +455,7 @@ body {
   align-content: space-around;
   color: white;
   font-size: 18px;
-  font-family: Arial;
+  font-family: Fredoka;
 }
 
 .DD h1 {
@@ -506,7 +509,7 @@ body {
 .BOT1 h1,
 .BOT2 h1 {
   color: white;
-  font-family: Arial;
+  font-family: Fredoka;
   font-size: 20px;
 }
 .BOT1:hover,
@@ -553,11 +556,21 @@ body {
 }
 .ot1,
 .ot2 {
-  background-image: linear-gradient(60deg, rgb(255, 255, 59) 0%, #64b3f4 100%);
+  background-image: linear-gradient(60deg, rgb(255, 255, 57) 0%, #1790f3 100%);
   height: 50%;
   width: 45%;
+  transition: linear-gradient, 1s;
   border-radius: 20px;
   box-shadow: 3px 3px black;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: Fredoka;
+  color: white;
+}
+.ot1:hover,
+.ot2:hover {
+  background-image: linear-gradient(300deg, rgb(255, 209, 59) 20%, #1e56f1 100%);
 }
 
 @media screen and (max-width: 1000px) {
@@ -573,6 +586,10 @@ body {
   .TDere,
   .TIzqu {
     height: 630px;
+  }
+
+  .Tcent {
+    height: 628px;
   }
 }
 
@@ -598,6 +615,7 @@ body {
     grid-column: 1;
     grid-row: 2;
     border-radius: 10px;
+    height: auto;
   }
   .TDere {
     grid-column: 1;
