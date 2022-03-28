@@ -278,10 +278,12 @@ function anterior() {
 }
 
 function imput() {
-  if (isNaN(document.getElementById("in").value)) {
-    buscarNom();
-  } else {
-    buscarID();
+  if (!ce) {
+    if (isNaN(document.getElementById("in").value)) {
+      buscarNom();
+    } else {
+      buscarID();
+    }
   }
 }
 
