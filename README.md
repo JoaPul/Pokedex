@@ -4,14 +4,13 @@
 Esta es una interfaz responsiva de un Pokedex (un diccionario de pokemones)
 
 ## Video 
-[![Watch the video](https://i.imgur.com/vKb2F1B.png)](https://youtu.be/vt5fpE0bzSY)
+[![Watch the video](https://i.imgur.com/cW9atpm.png)](https://youtu.be/qxooE1YKol0)
 
 ## Stack Tecnológico 
 Front-End:
--html
--css
--javascript
--axios(solo peticiones get)
--peticiones a API de Pokemon(https://pokeapi.co/)
 
-Takes two numbers and returns the sum.
+1. html
+2. css
+3. javascript
+4. axios(solo peticiones get)
+5. peticiones a API de Pokemon(https://pokeapi.co/)
